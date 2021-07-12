@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+    <video width="320" id="myVideo" src="2.webm" height="240" controls autoplay>
+        Your browser does not support the video tag.
+      </video>
+<script type='text/javascript'>
+    var videoSource= new Array();
+    videoSource[0] = "2.webm";
+    videoSource[1] = "1.mp4";
+    var currentVideo = 0;
+    var videoCount = videoSource.length;
+    document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+    function myHandler() {
+        console.log("Video Finished");
+        currentVideo++;
+        console.log("next video index "+currentVideo);
+        if (currentVideo == videoCount ) {
+            currentVideo = 0;
+            console.log("array index is equal");
+        }
+        document.getElementById("myVideo").setAttribute("src", videoSource[currentVideo]);
+        document.getElementById("myVideo").load();
+        document.getElementById("myVideo").play();      
+
+    }    
+</script>
+</body> 
+</html>
